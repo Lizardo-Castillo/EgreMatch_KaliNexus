@@ -33,6 +33,10 @@ const Icons = {
   Rocket: () => <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.5 10.5L21 3m-7.5 7.5v-3.5a1.5 1.5 0 00-1.5-1.5h-3.5L3 21l8-2 2.5 2.5a1.5 1.5 0 002.12-2.12l-2-2.5 2-8z" /></svg>,
   Calendar: () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-[#00a8b5]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>,
   MapPin: () => <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#00a8b5]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>,
+  Folder: () => <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-currentColor" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" /></svg>,
+  Book: () => <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-currentColor" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>,
+  Mail: () => <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-currentColor" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>,
+  Logout: () => <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-currentColor" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" /></svg>,
 };
 
 const mockJobs = [
@@ -652,6 +656,69 @@ export default function App() {
     </div>
   );
 
+  const renderDashboardPortafolio = () => (
+    <div className="flex flex-col h-full w-full p-4 overflow-y-auto pb-24 gap-4">
+      <div className="w-full bg-[#00a8b5] text-white rounded-xl p-4 shadow-sm flex items-center justify-between cursor-pointer hover:bg-[#00929e] transition">
+        <span className="font-bold">Añadir Nuevo Proyecto</span>
+        <span className="text-2xl leading-none">+</span>
+      </div>
+      {[1, 2].map((i) => (
+        <div key={i} className="w-full border-2 border-gray-200 rounded-xl p-4 bg-white shadow-sm relative group cursor-pointer hover:border-[#00a8b5] transition-colors">
+          <div className="w-full h-32 bg-gray-100 rounded-lg mb-3 flex items-center justify-center text-4xl overflow-hidden">
+            {i === 1 ? '💻' : '📱'}
+          </div>
+          <h3 className="font-bold text-[#1e3a5f] text-lg leading-tight">{i === 1 ? 'Sistema de Ventas Web' : 'App de Tareas en React Native'}</h3>
+          <p className="text-sm text-gray-500 mb-2 mt-1">Implementación completa de un sistema para supermercados.</p>
+          <div className="flex gap-1.5 mt-2">
+             <span className="text-[10px] bg-[#e6f4f5] text-[#00a8b5] px-2 py-0.5 rounded border border-[#00a8b5] font-medium">React</span>
+             <span className="text-[10px] bg-[#e6f4f5] text-[#00a8b5] px-2 py-0.5 rounded border border-[#00a8b5] font-medium">Node.js</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+
+  const renderDashboardCursos = () => (
+    <div className="flex flex-col h-full w-full p-4 overflow-y-auto pb-24 gap-3">
+      <div className="w-full border-2 border-dashed border-[#00a8b5] bg-[#e6f4f5] rounded-xl p-4 flex flex-col items-center justify-center cursor-pointer hover:bg-[#d0eaeb] transition-colors mb-2 text-center">
+        <Icons.Book />
+        <span className="font-bold text-[#1e3a5f] text-sm mt-2">Añadir Certificado</span>
+      </div>
+      {[1, 2, 3].map((i) => (
+        <div key={i} className="w-full border border-gray-200 rounded-xl p-4 bg-white flex gap-4 items-center cursor-pointer hover:border-[#00a8b5] transition-colors">
+          <div className="w-12 h-12 rounded-lg bg-orange-100 text-orange-500 flex items-center justify-center text-2xl">🎓</div>
+          <div className="flex-1">
+            <h3 className="font-bold text-[#1e3a5f] text-sm leading-tight">{i === 1 ? 'AWS Cloud Practitioner' : i === 2 ? 'Scrum Master Certificado' : 'Python for Data Science'}</h3>
+            <p className="text-xs text-gray-500 mt-1">{i === 1 ? 'Amazon Web Services' : i === 2 ? 'Scrum Alliance' : 'Coursera'}</p>
+          </div>
+          <div className="text-green-500"><Icons.Check /></div>
+        </div>
+      ))}
+    </div>
+  );
+
+  const renderDashboardBuzon = () => (
+    <div className="flex flex-col h-full w-full p-4 overflow-y-auto pb-24 gap-2">
+      <div className="w-full bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:border-[#00a8b5] cursor-pointer transition">
+        <div className="flex justify-between items-start mb-1">
+          <h3 className="font-bold text-[#1e3a5f] text-sm">Entrevista Programada</h3>
+          <span className="text-[10px] text-[#00a8b5] font-bold">12:30 PM</span>
+        </div>
+        <p className="text-xs text-gray-600">Hola Karla, nos gustaría agendar una entrevista técnica contigo para el puesto de Data Analyst...</p>
+        <span className="inline-block mt-2 text-[10px] bg-yellow-100 text-yellow-700 font-bold px-2 py-0.5 rounded">InfoCorp</span>
+      </div>
+      
+      <div className="w-full bg-white border border-gray-200 rounded-xl p-4 cursor-pointer hover:border-gray-300 transition opacity-70">
+        <div className="flex justify-between items-start mb-1">
+          <h3 className="font-semibold text-gray-600 text-sm">Actualización de estado</h3>
+          <span className="text-[10px] text-gray-400 font-medium">Ayer</span>
+        </div>
+        <p className="text-xs text-gray-500">Tu postulación ha pasado a la fase de revisión con el equipo de recursos humanos...</p>
+        <span className="inline-block mt-2 text-[10px] bg-gray-100 text-gray-500 font-bold px-2 py-0.5 rounded">NovaCorp</span>
+      </div>
+    </div>
+  );
+
   const renderDashboardHistorial = () => (
     <div className="flex flex-col h-full w-full">
       <div className="flex justify-center gap-6 px-4 py-2 mb-4 shrink-0 border-b border-gray-100 pb-4">
@@ -689,7 +756,10 @@ export default function App() {
       FAVORITOS: 'Mis Favoritos',
       MATCH: 'Match',
       HISTORIAL: 'Historial',
-      PERFIL: 'Mi Perfil'
+      PERFIL: 'Mi Perfil',
+      PORTAFOLIO: 'Portafolio de Proyectos',
+      CURSOS: 'Cursos y Certificaciones',
+      BUZON: 'Buzón de Mensajes'
     };
 
     return (
@@ -719,25 +789,62 @@ export default function App() {
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
               </div>
-              <div className="flex flex-col gap-2 px-4">
+              <div className="flex flex-col gap-2 px-4 h-full">
                 <button 
                   onClick={() => {
                     setDashTab('FAVORITOS');
                     setFavSubTab('FAVORITOS');
                     setIsSidebarOpen(false);
                   }}
-                  className="flex items-center gap-3 px-4 py-3 text-left rounded-xl hover:bg-[#e6f4f5] text-[#1e3a5f] font-semibold transition-colors"
+                  className={`flex items-center gap-3 px-4 py-3 text-left rounded-xl transition-colors ${dashTab === 'FAVORITOS' ? 'bg-[#e6f4f5] text-[#00a8b5]' : 'hover:bg-gray-50 text-[#1e3a5f]'} font-semibold`}
                 >
                   <Icons.Building />
-                  Empresas Favoritas
+                  Empresas
                 </button>
                 <button 
-                  onClick={() => setIsSidebarOpen(false)}
-                  className="flex items-center gap-3 px-4 py-3 text-left rounded-xl hover:bg-gray-50 text-gray-500 font-semibold transition-colors"
+                  onClick={() => {
+                    setDashTab('PORTAFOLIO');
+                    setIsSidebarOpen(false);
+                  }}
+                  className={`flex items-center gap-3 px-4 py-3 text-left rounded-xl transition-colors ${dashTab === 'PORTAFOLIO' ? 'bg-[#e6f4f5] text-[#00a8b5]' : 'hover:bg-gray-50 text-[#1e3a5f]'} font-semibold`}
                 >
-                  <Icons.NavProfile />
-                  <span className="text-sm">Configuración</span>
+                  <Icons.Folder />
+                  Portafolio
                 </button>
+                <button 
+                  onClick={() => {
+                    setDashTab('CURSOS');
+                    setIsSidebarOpen(false);
+                  }}
+                  className={`flex items-center gap-3 px-4 py-3 text-left rounded-xl transition-colors ${dashTab === 'CURSOS' ? 'bg-[#e6f4f5] text-[#00a8b5]' : 'hover:bg-gray-50 text-[#1e3a5f]'} font-semibold`}
+                >
+                  <Icons.Book />
+                  Cursos
+                </button>
+                <button 
+                  onClick={() => {
+                    setDashTab('BUZON');
+                    setIsSidebarOpen(false);
+                  }}
+                  className={`flex items-center gap-3 px-4 py-3 text-left rounded-xl transition-colors ${dashTab === 'BUZON' ? 'bg-[#e6f4f5] text-[#00a8b5]' : 'hover:bg-gray-50 text-[#1e3a5f]'} font-semibold`}
+                >
+                  <Icons.Mail />
+                  Buzón
+                </button>
+
+                <div className="mt-auto mb-4">
+                  <button 
+                    onClick={() => {
+                      setIsSidebarOpen(false);
+                      setUserType(null);
+                      setCurrentView('HOME');
+                    }}
+                    className="flex items-center gap-3 px-4 py-3 text-left rounded-xl hover:bg-red-50 text-red-500 font-bold transition-colors w-full"
+                  >
+                    <Icons.Logout />
+                    Cerrar sesión
+                  </button>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -755,6 +862,9 @@ export default function App() {
           {dashTab === 'MATCH' && renderDashboardMatch()}
           {dashTab === 'FAVORITOS' && renderDashboardFavoritos()}
           {dashTab === 'HISTORIAL' && renderDashboardHistorial()}
+          {dashTab === 'PORTAFOLIO' && renderDashboardPortafolio()}
+          {dashTab === 'CURSOS' && renderDashboardCursos()}
+          {dashTab === 'BUZON' && renderDashboardBuzon()}
         </div>
 
         {/* Bottom Navigation */}
