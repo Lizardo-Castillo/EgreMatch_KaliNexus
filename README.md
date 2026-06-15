@@ -12,9 +12,7 @@
 
 ## 📖 Descripción del Proyecto
 
-**EgreMatch** es una innovadora plataforma desarrollada para establecer un puente directo y efectivo entre jóvenes egresados y el mundo laboral corporativo. Utilizando un sistema intuitivo de "match" interactivo enfocado 100% en lo profesional, EgreMatch permite a las empresas descubrir talento emergente y a los graduados encontrar su primera gran oportunidad.
-
-Este repositorio contiene la interfaz de usuario (Frontend) diseñada con tecnologías web modernas para garantizar la mejor experiencia responsiva, fluida y altamente interactiva.
+**EgreMatch** es una innovadora plataforma desarrollada para establecer un puente directo y efectivo entre jóvenes egresados de la Universidad Nacional de San Agustín y el mundo laboral corporativo. Utilizando un sistema intuitivo de "match" interactivo enfocado 100% en lo profesional, EgreMatch permite a las empresas descubrir talento emergente y a los graduados encontrar su primera gran oportunidad.
 
 ## ✨ Características Principales
 
@@ -39,8 +37,6 @@ La arquitectura frontend del proyecto se basa en el siguiente ecosistema:
 *   **Automatización de Despliegue:** GitHub Actions y GitHub Pages.
 
 ## 🚀 Guía de Instalación Local
-
-Sigue los siguientes comandos en tu terminal para correr una copia funcional en tu equipo de desarrollo:
 
 1. **Clonar el repositorio:**
    ```bash
