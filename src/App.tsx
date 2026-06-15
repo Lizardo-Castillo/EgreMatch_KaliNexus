@@ -162,7 +162,7 @@ export default function App() {
   const renderEgPhone = () => (
     <div className="flex flex-col items-center w-full p-6 h-full">
         <Header onBack={goBack} />
-        <ProgressBar current={1} total={4} />
+        <ProgressBar current={1} total={5} />
         <div className="w-full text-left mb-2">
             <h2 className="text-2xl font-bold text-[#1e3a5f]">Numero Telefónico</h2>
         </div>
@@ -178,10 +178,10 @@ export default function App() {
     </div>
   );
 
-  const renderVerify = (nextRoute, step) => (
+  const renderVerify = (nextRoute, step, totalSteps = 4) => (
     <div className="flex flex-col items-center w-full p-6 h-full">
         <Header onBack={goBack} />
-        <ProgressBar current={step} total={4} />
+        <ProgressBar current={step} total={totalSteps} />
         <div className="w-full text-left mb-2 mt-2">
             <h2 className="text-2xl font-bold text-[#1e3a5f] leading-tight">Ingresa tu Codigo<br/>de Verificacion</h2>
         </div>
@@ -217,7 +217,7 @@ export default function App() {
   const renderEgCareer = () => (
     <div className="flex flex-col items-center w-full p-6 h-full">
         <Header onBack={goBack} />
-        <ProgressBar current={3} total={4} />
+        <ProgressBar current={3} total={5} />
         <div className="w-full text-left mb-2">
             <h2 className="text-2xl font-bold text-[#1e3a5f]">Carrera Profesional</h2>
             <p className="text-xs text-gray-500 mb-4 font-medium mt-1">Selecciona tu Carrera Profesional</p>
@@ -251,7 +251,7 @@ export default function App() {
   const renderEgModality = () => (
     <div className="flex flex-col items-center w-full p-6 h-full pb-8">
         <Header onBack={goBack} />
-        <ProgressBar current={4} total={4} />
+        <ProgressBar current={4} total={5} />
         <div className="w-full text-left mb-3">
             <h2 className="text-2xl font-bold text-[#1e3a5f]">Modalidad de Trabajo</h2>
         </div>
@@ -287,8 +287,47 @@ export default function App() {
         </div>
 
         <div className="w-full flex gap-3 mt-4 shrink-0">
+            <button onClick={() => navigate('EG_CV')} className="w-1/3 bg-white border-2 border-gray-400 text-gray-600 font-bold py-3 rounded-xl shadow-sm">Omitir</button>
+            <button onClick={() => navigate('EG_CV')} className="w-2/3 bg-[#00a8b5] text-white font-bold py-3 rounded-xl shadow-sm">Siguiente →</button>
+        </div>
+    </div>
+  );
+
+  const renderEgCV = () => (
+    <div className="flex flex-col items-center w-full p-6 h-full pb-8">
+        <Header onBack={goBack} />
+        <ProgressBar current={5} total={5} />
+        <div className="w-full text-left mb-3">
+            <h2 className="text-2xl font-bold text-[#1e3a5f]">Sube tu CV</h2>
+            <p className="text-xs text-gray-500 mb-6 font-medium mt-1">Destaca tu perfil añadiendo tu currículum.</p>
+        </div>
+        
+        <div className="w-full flex-1 flex flex-col gap-6 mt-4">
+            <div className="w-full border-2 border-dashed border-[#00a8b5] bg-[#e6f4f5] rounded-2xl p-6 flex flex-col items-center justify-center cursor-pointer hover:bg-[#d0eaeb] transition-colors">
+                <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center text-[#00a8b5] mb-3 shadow-sm">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" /></svg>
+                </div>
+                <span className="font-bold text-[#1e3a5f] text-sm mb-1">Subir archivo PDF</span>
+                <span className="text-[10px] text-gray-500">Máximo 5MB</span>
+            </div>
+
+            <div className="flex items-center w-full">
+                <div className="flex-1 h-px bg-gray-200"></div>
+                <span className="text-xs text-gray-400 px-3 font-medium">O añade un enlace</span>
+                <div className="flex-1 h-px bg-gray-200"></div>
+            </div>
+
+            <div className="w-full relative">
+                <div className="absolute left-3 top-3.5 text-gray-400">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+                </div>
+                <input type="url" placeholder="Enlace a LinkedIn, Portafolio..." className="w-full px-4 py-3 pl-10 bg-white border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#00a8b5] font-medium text-sm placeholder-gray-400" />
+            </div>
+        </div>
+
+        <div className="w-full flex gap-3 mt-4 shrink-0">
             <button onClick={() => navigate('DONE')} className="w-1/3 bg-white border-2 border-gray-400 text-gray-600 font-bold py-3 rounded-xl shadow-sm">Omitir</button>
-            <button onClick={() => navigate('DONE')} className="w-2/3 bg-[#00a8b5] text-white font-bold py-3 rounded-xl shadow-sm">Siguiente →</button>
+            <button onClick={() => navigate('DONE')} className="w-2/3 bg-[#00a8b5] text-white font-bold py-3 rounded-xl shadow-sm">Finalizar →</button>
         </div>
     </div>
   );
@@ -999,10 +1038,11 @@ export default function App() {
         {currentView === 'HOME' && renderHome()}
         {currentView === 'LOGIN' && renderLogin()}
         {currentView === 'EG_PHONE' && renderEgPhone()}
-        {currentView === 'EG_VERIFY' && renderVerify('EG_WELCOME', 2)}
+        {currentView === 'EG_VERIFY' && renderVerify('EG_WELCOME', 2, 5)}
         {currentView === 'EG_WELCOME' && renderEgWelcome()}
         {currentView === 'EG_CAREER' && renderEgCareer()}
         {currentView === 'EG_MODALITY' && renderEgModality()}
+        {currentView === 'EG_CV' && renderEgCV()}
         
         {/* Vistas completas de Empresa */}
         {currentView === 'EM_INFO' && renderEmInfo()}
