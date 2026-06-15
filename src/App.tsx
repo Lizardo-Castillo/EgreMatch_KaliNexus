@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const LogoEgreMatch = () => (
   <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="mb-2">
@@ -84,7 +85,7 @@ export default function App() {
   const [history, setHistory] = useState([]);
   
   // Dashboard States (Egresado)
-  const [dashTab, setDashTab] = useState('PERFIL'); // EXPLORAR, FAVORITOS, MATCH, HISTORIAL, PERFIL
+  const [dashTab, setDashTab] = useState('EXPLORAR'); // EXPLORAR, FAVORITOS, MATCH, HISTORIAL, PERFIL
   const [perfilSubTab, setPerfilSubTab] = useState('INFO');
   const [favSubTab, setFavSubTab] = useState('FAVORITOS');
   const [explorarExpanded, setExplorarExpanded] = useState(false);
@@ -516,7 +517,12 @@ export default function App() {
         <div className="absolute top-8 w-72 h-80 bg-white border border-gray-200 rounded-2xl shadow-md transform scale-95 -translate-y-2 -z-10 rotate-2 opacity-70"></div>
         
         {/* Main Card */}
-        <div className="w-full max-w-[300px] bg-white border-2 border-[#00a8b5] rounded-2xl shadow-lg flex flex-col overflow-hidden transition-all z-10 mt-4">
+        <motion.div 
+          drag
+          dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+          dragElastic={0.8}
+          className="w-full max-w-[300px] bg-white border-2 border-[#00a8b5] rounded-2xl shadow-lg flex flex-col overflow-hidden z-10 mt-4 cursor-grab active:cursor-grabbing"
+        >
           <div className="p-5 flex flex-col items-center relative">
             <div className="absolute top-4 right-4 text-[#ffb020] font-bold text-lg rotate-12 bg-yellow-50 border border-yellow-200 px-2 rounded-lg shadow-sm">{job.match}%</div>
             
@@ -545,7 +551,7 @@ export default function App() {
               <button onClick={() => setExplorarExpanded(true)} className="text-[#00a8b5] text-sm font-semibold mb-2">Ver Detalles</button>
             )}
           </div>
-        </div>
+        </motion.div>
 
         {/* Action Buttons */}
         {!explorarExpanded && (
