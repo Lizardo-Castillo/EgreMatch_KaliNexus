@@ -1143,9 +1143,58 @@ export default function App() {
 
     return (
       <div className="flex flex-col h-full w-full relative bg-[#f8fcfc] rounded-[2.5rem] overflow-hidden">
+        {/* Sidebar Overlay */}
+        {isSidebarOpen && (
+          <div className="absolute inset-0 z-50 flex">
+            {/* Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="absolute inset-0 bg-black/40 backdrop-blur-sm" 
+              onClick={() => setIsSidebarOpen(false)} 
+            />
+            {/* Sidebar */}
+            <motion.div 
+              initial={{ x: '-100%' }}
+              animate={{ x: 0 }}
+              className="relative w-3/4 h-full bg-white shadow-2xl flex flex-col py-6 overflow-hidden rounded-r-[2rem]"
+            >
+              <div className="px-6 mb-8 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 overflow-hidden"><LogoEgreMatch /></div>
+                  <h2 className="text-xl font-bold text-[#1e3a5f]">Menú</h2>
+                </div>
+                <button onClick={() => setIsSidebarOpen(false)} className="text-gray-400 hover:text-gray-600">
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+              </div>
+              <div className="flex flex-col gap-2 px-4 h-full">
+                <div className="mt-auto mb-4">
+                  <button 
+                    onClick={() => {
+                      setIsSidebarOpen(false);
+                      setUserType(null);
+                      setCurrentView('HOME');
+                    }}
+                    className="flex items-center gap-3 px-4 py-3 text-left rounded-xl hover:bg-red-50 text-red-500 font-bold transition-colors w-full"
+                  >
+                    <Icons.Logout />
+                    Cerrar sesión
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+
         {/* Top Header */}
         <div className="px-6 pt-6 pb-2 bg-white shadow-sm z-20 border-b border-gray-100">
-          <Header showBack={empresaDashTab === 'CONVOCATORIA'} onBack={() => setEmpresaDashTab('EMPRESA')} title={titles[empresaDashTab]} />
+          <Header 
+            showBack={empresaDashTab === 'CONVOCATORIA'} 
+            onBack={() => setEmpresaDashTab('EMPRESA')} 
+            title={titles[empresaDashTab]} 
+            onMenuClick={() => setIsSidebarOpen(true)}
+          />
         </div>
 
         {/* Main Content Area */}
